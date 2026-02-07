@@ -9,6 +9,9 @@
       background-color: #fff0f5;
       text-align: center;
       padding-top: 100px;
+      transition: background-image 1s ease-in-out;
+      background-size: cover;
+      background-position: center;
     }
     h1 {
       font-size: 2.5em;
@@ -38,6 +41,7 @@
       color: #ff1493;
       margin-top: 50px;
       display: none;
+      text-shadow: 2px 2px 5px #000;
     }
   </style>
 </head>
@@ -47,17 +51,10 @@
   <button id="noBtn">NO 💔</button>
   <div id="message">💖 Bunny loves you! 💖</div>
 
-  <!-- Valentine Music -->
-  <audio id="bgMusic" autoplay loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
   <script>
     const noBtn = document.getElementById('noBtn');
     const yesBtn = document.getElementById('yesBtn');
     const message = document.getElementById('message');
-    const music = document.getElementById('bgMusic');
 
     // Move NO button randomly when hovered
     noBtn.addEventListener('mouseover', () => {
@@ -67,11 +64,12 @@
       noBtn.style.top = `${y}px`;
     });
 
-    // YES button click shows message
+    // YES button click shows message + background image
     yesBtn.addEventListener('click', () => {
       message.style.display = 'block';
       yesBtn.style.display = 'none';
       noBtn.style.display = 'none';
+      document.body.style.backgroundImage = "url('https://drive.google.com/file/d/10AMKlAwInqoUj98AZHoc8JheOuG3peDs/view?usp=drive_link')";
     });
   </script>
 </body>
