@@ -50,16 +50,24 @@
       transform: translate(-50%, -50%);
     }
     #message {
-      font-size: 2.5em;
+      font-size: 4em;              /* Bigger message */
       color: #ff1493;
       margin-top: 50px;
       display: none;
-      text-shadow: 2px 2px 5px #000;
+      text-shadow: 3px 3px 8px #000;
+      animation: heartbeat 1.5s infinite;
+    }
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
 <body>
-  <h1>JUHI, WILL YOU BE MY VALENTINE?</h1>
+  <h1 id="question">JUHI, WILL YOU BE MY VALENTINE?</h1>
   <button id="yesBtn">YES 💖</button>
   <button id="noBtn">NO 💔</button>
   <div id="message">💖 Bunny loves you! 💖</div>
@@ -68,6 +76,7 @@
     const noBtn = document.getElementById('noBtn');
     const yesBtn = document.getElementById('yesBtn');
     const message = document.getElementById('message');
+    const question = document.getElementById('question');
 
     // Move NO button randomly when hovered
     noBtn.addEventListener('mouseover', () => {
@@ -77,11 +86,12 @@
       noBtn.style.top = `${y}px`;
     });
 
-    // YES button click shows message + background image
+    // YES button click shows message + background image + hides question
     yesBtn.addEventListener('click', () => {
       message.style.display = 'block';
       yesBtn.style.display = 'none';
       noBtn.style.display = 'none';
+      question.style.display = 'none';
       // Use your uploaded picture file name here
       document.body.style.backgroundImage = "url('Juhi.jpg')";
     });
